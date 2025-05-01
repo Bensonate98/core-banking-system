@@ -1,0 +1,39 @@
+{
+  "name": "core_banking_system",
+  "version": "1.0.0",
+  "description": "Backend of a simple banking system",
+  "repository": {
+    "type": "git",
+    "url": "Score_banking_system"
+  },
+  "license": "ISC",
+  "author": "Benson Christopher",
+  "type": "module",
+  "main": "src/server.js",
+  "jest": {
+  "transform": {}
+  },
+
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.7.0"
+  }
+}

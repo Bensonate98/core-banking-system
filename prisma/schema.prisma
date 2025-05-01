@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id                      Int             @id @default(autoincrement())
+  firstname               String
+  lastname                String
+  email                   String          @unique
+  phone                   String          @unique
+  password                String
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+  tokens                  Token[]
+  accounts                Account[]
+
+  @@index([id])  
+}
+
+model Token {
+  id                      Int             @id @default(autoincrement())
+  refreshToken            String          
+  expiresAt               DateTime 
+  customerId              Int      
+  customer                Customer        @relation(fields: [customerId], references: [id])
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+
+  @@index([refreshToken])  
+}
+
+enum AccountType {
+  SAVINGS 
+  CURRENT
+}
+
+enum AccountStatus {
+  ACTIVE
+  CLOSED
+}
+
+model Account {
+  id                      Int             @id @default(autoincrement())
+  accountNumber           String          @unique          
+  balance                 Decimal         @default(0) @db.Decimal(18, 2)
+  type                    AccountType     @default(SAVINGS)
+  status                  AccountStatus   @default(ACTIVE)
+  closedAt                DateTime?        
+  customerId              Int      
+  customer                Customer        @relation(fields: [customerId], references: [id])       
+  createdAt               DateTime        @default(now())
+  updatedAt               DateTime        @updatedAt
+  transactionsFrom        Transaction[]   @relation("FromAccount")
+  transactionsTo          Transaction[]   @relation("ToAccount")
+
+
+  @@index([accountNumber, customerId, id])  
+}
+
+enum TransctionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+}
+
+model Transaction {
+  id                       Int             @id @default(autoincrement())
+  type                     TransctionType   
+  amount                   Decimal         @db.Decimal(18, 2)
+  fromAccountId            Int?     
+  toAccountId              Int?     
+  fromAccount              Account?        @relation("FromAccount", fields: [fromAccountId], references: [id])
+  toAccount                Account?        @relation("ToAccount", fields: [toAccountId], references: [id])
+  createdAt                DateTime        @default(now())
+  updatedAt                DateTime        @updatedAt
+}
+
+
+
