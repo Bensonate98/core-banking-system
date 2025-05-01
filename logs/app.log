@@ -11,3 +11,4 @@ Unique constraint failed on the constraint: `Customer_phone_key`
 [2025-05-01T04:24:41.262Z] ERROR: GET /api/v1/accounts/3807813205 - Access token not found, login
 [2025-05-01T04:40:29.577Z] ERROR: POST /api/v1/auth/refresh - Invalid or expired refresh token
 [2025-05-01T04:41:17.306Z] ERROR: POST /api/v1/auth/refresh - Invalid or expired refresh token
+[2025-05-01T14:18:12.018Z] ERROR: POST /api/v1/accounts - Invalid or expired access token, login
