@@ -44,7 +44,7 @@ This installs all required Node.js packages listed in `package.json`.
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the project root then copy and paste the .env.example:
+Create a `.env` file in the project root then copy and paste the `.env.example`:
 
 Update the values to match your local environment if they don't match.
 
@@ -109,7 +109,7 @@ Access the full API documentation on Postman:
 
 Access ERD here:
 
-[🔗 View Database deign here ](https://dbdocs.io/bensonchristopher84/core-banking-system)
+[🔗 View Database design here ](https://dbdocs.io/bensonchristopher84/core-banking-system)
 
 
 ## Key Design Notes:
@@ -131,7 +131,7 @@ Access ERD here:
 
 ## Author
 
-Built with ❤️ by [Benson Christopher Emuzo]  
+Built with ❤️ by Benson Christopher Emuzo 
 [GitHub](https://github.com/bensonate98) • [LinkedIn](https://www.linkedin.com/in/christopher-benson-1a560b244/)
 
 
